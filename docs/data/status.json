@@ -1,0 +1,15 @@
+{
+ "folders": {
+  "w45-2026-fr": {
+   "slug": "w45-2026-fr",
+   "validFrom": "2026-11-05",
+   "validTo": "2026-11-11",
+   "status": "ok",
+   "message": null,
+   "count": 98,
+   "food": 47,
+   "fetchedAt": "2026-11-10T13:54:12.062Z"
+  }
+ },
+ "updatedAt": "2026-11-10T13:54:12.214Z"
+}
