@@ -1,0 +1,49 @@
+# Lit le folder Delhaize et publie les promos CHIFFRÉES dans docs/data/ (servi par GitHub Pages).
+# Deux passages par jour ; le script ne lit un folder que s'il manque (une lecture réussie par folder) et ne commit rien
+# quand il n'y a rien de nouveau. Usage strictement personnel : le contenu publié est chiffré avec le secret PROMO_KEY.
+name: Lecture du folder Delhaize
+
+on:
+  schedule:
+    - cron: '30 5,16 * * *'   # UTC : 6 h 30 / 17 h 30 en hiver à Bruxelles (7 h 30 / 18 h 30 en été)
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Relire le folder en cours même s'il est déjà lu"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: folder
+  cancel-in-progress: false
+
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Lire le folder
+        env:
+          PROMO_KEY: ${{ secrets.PROMO_KEY }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          if [ "$FORCE" = "true" ]; then node scripts/update-folder.js --force; else node scripts/update-folder.js; fi
+      - name: Publier s'il y a du nouveau
+        run: |
+          if [ -n "$(git status --porcelain docs/data)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/data
+            git commit -m "Promos Delhaize : mise à jour automatique"
+            git pull --rebase --autostash
+            git push
+          else
+            echo "Rien de nouveau."
+          fi

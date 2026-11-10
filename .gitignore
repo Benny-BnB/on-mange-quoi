@@ -1,0 +1,6 @@
+node_modules/
+data/
+*.log
+.DS_Store
+artifact/dev/dev-db.json
+artifact/bundle.js
