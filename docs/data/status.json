@@ -19,7 +19,17 @@
    "count": 98,
    "food": 38,
    "fetchedAt": "2026-11-11T12:52:53.807Z"
+  },
+  "w47-2026-fr": {
+   "slug": "w47-2026-fr",
+   "validFrom": "2026-11-19",
+   "validTo": "2026-11-25",
+   "status": "ok",
+   "message": null,
+   "count": 112,
+   "food": 37,
+   "fetchedAt": "2026-11-16T13:53:56.664Z"
   }
  },
- "updatedAt": "2026-11-11T12:52:53.807Z"
+ "updatedAt": "2026-11-16T13:53:56.664Z"
 }
