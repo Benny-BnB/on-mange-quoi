@@ -29,7 +29,17 @@
    "count": 112,
    "food": 37,
    "fetchedAt": "2026-11-16T13:53:56.664Z"
+  },
+  "w48-2026-fr": {
+   "slug": "w48-2026-fr",
+   "validFrom": "2026-11-26",
+   "validTo": "2026-12-02",
+   "status": "ok",
+   "message": null,
+   "count": 114,
+   "food": 38,
+   "fetchedAt": "2026-11-25T15:54:35.639Z"
   }
  },
- "updatedAt": "2026-11-16T13:53:56.664Z"
+ "updatedAt": "2026-11-25T15:54:35.639Z"
 }
